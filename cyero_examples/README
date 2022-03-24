@@ -34,7 +34,10 @@ and them move on to generating more events (e.g. 10k, etc)
 
 >> gevgen -n 10 -p 11 -t 1000060120 -e 0.56  --event-generator-list EM --tune G18_10a_02_11a --cross-sections carbon12_spline_EMPlusMEC_G18_10a_02_11a.xml 
 
-# need to ask Afro what this command was again (is it to convert ghep to root format?)
+# converts  GEHEP file to ROOT file
+# -f specifies the output format, where 'gst' is a GENIE summary ntuple format that can be used for plotting with ROOT
+# -i specifies the output file name
+
 >> gntpc -f gst -i gntp.0.ghep.root
 
 
