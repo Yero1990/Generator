@@ -1,0 +1,40 @@
+
+Notes on work/setup of GENIE-MC/Generator
+
+Official Repo:
+https://github.com/GENIE-MC/Generator
+
+--- useful commands on fermilab screen ---
+source genie_env.sh  #this command is necessary at the beginning of each fermilab genie session to set up the env. variables
+screen -S  spline   (command that enables to put things in background)
+# after executing command
+screen -r  (bring process from background to current terminal)
+crtl+A+D (put process from current terminal to background)
+
+# command to know which tagged version of Genie Generator Im currently on
+git describe --tags
+
+
+http://www.genie-mc.org
+-------------------------------------------
+
+------------------------------------------------------
+Mar 07, 2022 (Meeting w/ Afro) + Homework Assignments
+------------------------------------------------------
+# process Im currently running on fermilab machines (in background) to 
+calculate (generate xml files) with cross sections (takes ~ 24 hrs)
+
+See: https://genie-docdb.pp.rl.ac.uk/cgi-bin/ShowDocument?docid=2
+for details of the commands below
+                                       
+>> gmkspl -p 11 -t 1000060120 -e 10 -o carbon12_spline_EMPlusMEC_G18_10a_02_11a.xml --tune G18_10a_02_11a --event-generator-list EM
+
+# after above process finishes, run the command below to generate 10 events from genie (as a test), 
+and them move on to generating more events (e.g. 10k, etc)
+
+>> gevgen -n 10 -p 11 -t 1000060120 -e 0.56  --event-generator-list EM --tune G18_10a_02_11a --cross-sections carbon12_spline_EMPlusMEC_G18_10a_02_11a.xml 
+
+# need to ask Afro what this command was again (is it to convert ghep to root format?)
+>> gntpc -f gst -i gntp.0.ghep.root
+
+
